@@ -3,22 +3,29 @@ const multer = require('multer')
 
 const app = express()
 const fs = require('fs')
-const port = 8000;
-const mongoose = require('mongoose')
 const path = require('path')
+const port = 8000;
+// const mongoose = require('mongoose')
+// const path = require('path')
 
-const db = mongoose.connection
-mongoose.connect('mongodb://127.0.0.1/anywhere')
+// const db = mongoose.connection
+// mongoose.connect('mongodb+srv://utsavgarchar:utsavgarchar@cluster0.wpvtcvx.mongodb.net/?retryWrites=true&w=majority')
 
-db.once('open', (err) => {
+// db.once('open', (err) => {
 
-    if (err) { 
-        console.log('DataBase Not Connected: ' + err)
-    } 
-    console.log("DataBase MongoDb Connected")
+//     if (err) { 
+//         console.log('DataBase Not Connected: ' + err)
+//     } 
+//     console.log("DataBase MongoDb Connected")
 
-})
-
+// })
+const mongoose = require('mongoose')
+mongoose.connect('mongodb+srv://utsav:utsavgarchar121@cluster0.wpvtcvx.mongodb.net',{
+    useNewUrlParser : true,
+    useUnifiedTopology : true
+}).then(()=>{
+    console.log('DB Connedcted')
+}).catch(err => console.log(err))
 const exampleSchema = new mongoose.Schema({
     images: {
         type: String,
